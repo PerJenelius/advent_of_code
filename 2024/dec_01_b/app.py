@@ -7,19 +7,19 @@ def get_indata(file_name: str):
     return content
 
 
-def calculate_discrepancy(data: str):
+def get_similarity_score(data: str):
     coordinates_left = []
     coordinates_right = []
-    discrepancy = 0
+    similarity_score = 0
     lines = data.split("\n")
     for line in lines:
         coordinates_left.append(int(line.split("   ")[0]))
         coordinates_right.append(int(line.split("   ")[1]))
-    coordinates_left.sort()
-    coordinates_right.sort()
-    for index in range(len(lines)):
-        discrepancy += abs(coordinates_right[index] - coordinates_left[index])
-    return discrepancy
+    for left_coordinate in coordinates_left:
+        for right_coordinate in coordinates_right:
+            if right_coordinate == left_coordinate:
+                similarity_score += left_coordinate
+    return similarity_score
 
 
 file_definitions = ("test_data.txt", "indata.txt")
@@ -28,11 +28,11 @@ print(f"Calculating...\n")
 start_time = time.time()
 
 test_data = get_indata(file_definitions[0])
-test_discrepancy = calculate_discrepancy(test_data)
+test_discrepancy = get_similarity_score(test_data)
 print("Test Result:", test_discrepancy)
 
 data = get_indata(file_definitions[1])
-discrepancy = calculate_discrepancy(data)
+discrepancy = get_similarity_score(data)
 print("Real Result:", discrepancy)
 
 stop_time = time.time()
