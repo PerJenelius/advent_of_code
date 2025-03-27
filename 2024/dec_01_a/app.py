@@ -23,6 +23,7 @@ def calculate_discrepancy(data: str):
 
 
 file_definitions = ("test_data.txt", "indata.txt")
+expected_test_result = 11
 
 print(f"Calculating...\n")
 start_time = time.time()
@@ -30,6 +31,7 @@ start_time = time.time()
 test_data = get_indata(file_definitions[0])
 test_discrepancy = calculate_discrepancy(test_data)
 print("Test Result:", test_discrepancy)
+print("-Expected--:", expected_test_result)
 
 data = get_indata(file_definitions[1])
 discrepancy = calculate_discrepancy(data)
@@ -37,5 +39,4 @@ print("Real Result:", discrepancy)
 
 stop_time = time.time()
 elapsed_time = round(stop_time - start_time, 3)
-print(f"\nDone")
-print(f"Elapsed time: {elapsed_time}s")
+print(f"\nElapsed time: {elapsed_time}s")
