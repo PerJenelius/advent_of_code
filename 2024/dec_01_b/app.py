@@ -25,8 +25,8 @@ def get_similarity_score(data: str):
 file_definitions = ("test_data.txt", "indata.txt")
 expected_test_result = 31
 
-print(f"Calculating...\n")
 start_time = time.time()
+print(f"Calculating...\n")
 
 test_data = get_indata(file_definitions[0])
 test_discrepancy = get_similarity_score(test_data)

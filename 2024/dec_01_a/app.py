@@ -25,8 +25,8 @@ def calculate_discrepancy(data: str):
 file_definitions = ("test_data.txt", "indata.txt")
 expected_test_result = 11
 
-print(f"Calculating...\n")
 start_time = time.time()
+print(f"Calculating...\n")
 
 test_data = get_indata(file_definitions[0])
 test_discrepancy = calculate_discrepancy(test_data)

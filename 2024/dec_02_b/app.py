@@ -63,8 +63,8 @@ def evaluate_safety(levels, trend):
 file_definitions = ("test_data.txt", "indata.txt")
 expected_test_result = 4
 
-print(f"Calculating...\n")
 start_time = time.time()
+print(f"Calculating...\n")
 
 test_data = get_indata(file_definitions[0])
 test_discrepancy = get_number_of_safe_reports(test_data)
