@@ -2,9 +2,9 @@ import time
 
 
 def get_indata(file_name: str):
-    file = open(file_name, "r")
-    content = file.read()
-    return content
+    with open(file_name, "r") as file:
+        content = file.read()
+        return content
 
 
 def get_similarity_score(data: str):
@@ -22,21 +22,24 @@ def get_similarity_score(data: str):
     return similarity_score
 
 
-file_definitions = ("test_data.txt", "indata.txt")
-expected_test_result = 31
+def main():
+    file_definitions = ("test_data.txt", "indata.txt")
+    expected_test_result = 31
 
-start_time = time.time()
-print(f"Calculating...\n")
+    start_time = time.time()
+    print(f"Calculating...\n")
 
-test_data = get_indata(file_definitions[0])
-test_discrepancy = get_similarity_score(test_data)
-print("Test Result:", test_discrepancy)
-print("-Expected--:", expected_test_result)
+    test_data = get_indata(file_definitions[0])
+    test_discrepancy = get_similarity_score(test_data)
+    print("Test Result:", test_discrepancy)
+    print("-Expected--:", expected_test_result)
 
-data = get_indata(file_definitions[1])
-discrepancy = get_similarity_score(data)
-print("Real Result:", discrepancy)
+    data = get_indata(file_definitions[1])
+    discrepancy = get_similarity_score(data)
+    print("Real Result:", discrepancy)
 
-stop_time = time.time()
-elapsed_time = round(stop_time - start_time, 3)
-print(f"\nElapsed time: {elapsed_time}s")
+    stop_time = time.time()
+    elapsed_time = round(stop_time - start_time, 3)
+    print(f"\nElapsed time: {elapsed_time}s")
+
+main()
