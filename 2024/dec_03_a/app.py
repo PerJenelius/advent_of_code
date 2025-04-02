@@ -3,18 +3,17 @@ import time
 
 def get_indata(file_name: str):
     with open(file_name, "r") as file:
-        content = file.read()
-        return content
+        return file.read()
 
 
 def get_sum_of_calculations(data: str):
     sum_total = 0
     for raw_string in data.split("mul("):
-        shorter_string = raw_string.split(")")[0]
+        numbers_string = raw_string.split(")")[0]
         try:
-            left_number = int(shorter_string.split(",")[0])
-            right_number = int(shorter_string.split(",")[1])
-            if shorter_string == f"{left_number},{right_number}":
+            left_number = int(numbers_string.split(",")[0])
+            right_number = int(numbers_string.split(",")[1])
+            if numbers_string == f"{left_number},{right_number}":
                 sum_total += left_number * right_number
         except:
             continue
@@ -29,16 +28,17 @@ def main():
     print(f"Calculating...\n")
 
     test_data = get_indata(file_definitions[0])
-    test_discrepancy = get_sum_of_calculations(test_data)
-    print("Test Result:", test_discrepancy)
+    test_result = get_sum_of_calculations(test_data)
+    print("Test Result:", test_result)
     print("-Expected--:", expected_test_result)
 
     data = get_indata(file_definitions[1])
-    discrepancy = get_sum_of_calculations(data)
-    print("Real Result:", discrepancy)
+    result = get_sum_of_calculations(data)
+    print("Real Result:", result)
 
     stop_time = time.time()
     elapsed_time = round(stop_time - start_time, 3)
     print(f"\nElapsed time: {elapsed_time}s")
+
 
 main()

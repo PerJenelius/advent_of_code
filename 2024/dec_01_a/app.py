@@ -3,8 +3,7 @@ import time
 
 def get_indata(file_name: str):
     with open(file_name, "r") as file:
-        content = file.read()
-        return content
+        return file.read()
 
 
 def calculate_discrepancy(data: str):
@@ -21,6 +20,7 @@ def calculate_discrepancy(data: str):
         discrepancy += abs(coordinates_right[index] - coordinates_left[index])
     return discrepancy
 
+
 def main():
     file_definitions = ("test_data.txt", "indata.txt")
     expected_test_result = 11
@@ -29,16 +29,17 @@ def main():
     print(f"Calculating...\n")
 
     test_data = get_indata(file_definitions[0])
-    test_discrepancy = calculate_discrepancy(test_data)
-    print("Test Result:", test_discrepancy)
+    test_result = calculate_discrepancy(test_data)
+    print("Test Result:", test_result)
     print("-Expected--:", expected_test_result)
 
     data = get_indata(file_definitions[1])
-    discrepancy = calculate_discrepancy(data)
-    print("Real Result:", discrepancy)
+    result = calculate_discrepancy(data)
+    print("Real Result:", result)
 
     stop_time = time.time()
     elapsed_time = round(stop_time - start_time, 3)
     print(f"\nElapsed time: {elapsed_time}s")
+
 
 main()

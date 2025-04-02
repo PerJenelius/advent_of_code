@@ -3,13 +3,12 @@ import time
 
 def get_indata(file_name: str):
     with open(file_name, "r") as file:
-        content = file.read()
-        return content
+        return file.read()
 
 
 def get_number_of_safe_reports(data: str):
-    reports = data.split("\n")
     safe_report_count = 0
+    reports = data.split("\n")
     for report in reports:
         levels = report.split(" ")
         is_safe = True
@@ -37,16 +36,17 @@ def main():
     print(f"Calculating...\n")
 
     test_data = get_indata(file_definitions[0])
-    test_discrepancy = get_number_of_safe_reports(test_data)
-    print("Test Result:", test_discrepancy)
+    test_result = get_number_of_safe_reports(test_data)
+    print("Test Result:", test_result)
     print("-Expected--:", expected_test_result)
 
     data = get_indata(file_definitions[1])
-    discrepancy = get_number_of_safe_reports(data)
-    print("Real Result:", discrepancy)
+    result = get_number_of_safe_reports(data)
+    print("Real Result:", result)
 
     stop_time = time.time()
     elapsed_time = round(stop_time - start_time, 3)
     print(f"\nElapsed time: {elapsed_time}s")
+
 
 main()

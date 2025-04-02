@@ -3,31 +3,7 @@ import time
 
 def get_indata(file_name: str):
     with open(file_name, "r") as file:
-        content = file.read()
-        return content
-
-
-def get_number_of_safe_reports(data: str):
-    reports = data.split("\n")
-    safe_report_count = 0
-    for report in reports:
-        levels = report.split(" ")
-        previous_level = int(levels[0])
-        unsafe_count = 0
-        trend = observe_the_trend(levels)
-        unsafe_indexes = evaluate_safety(levels, trend)
-        if len(unsafe_indexes) == 0:
-            safe_report_count += 1
-        else:
-            unsafe_indexes.append(0)
-            for unsafe_index in unsafe_indexes:
-                temp_levels = report.split(" ")
-                del temp_levels[unsafe_index]
-                new_unsafe_indexes = evaluate_safety(temp_levels, trend)
-                if len(new_unsafe_indexes) == 0:
-                    safe_report_count += 1
-                    break
-    return safe_report_count
+        return file.read()
 
 
 def observe_the_trend(levels: str):
@@ -60,6 +36,29 @@ def evaluate_safety(levels, trend):
     return unsafe_indexes
 
 
+def get_number_of_safe_reports(data: str):
+    safe_report_count = 0
+    reports = data.split("\n")
+    for report in reports:
+        levels = report.split(" ")
+        previous_level = int(levels[0])
+        unsafe_count = 0
+        trend = observe_the_trend(levels)
+        unsafe_indexes = evaluate_safety(levels, trend)
+        if len(unsafe_indexes) == 0:
+            safe_report_count += 1
+        else:
+            unsafe_indexes.append(0)
+            for unsafe_index in unsafe_indexes:
+                temp_levels = report.split(" ")
+                del temp_levels[unsafe_index]
+                new_unsafe_indexes = evaluate_safety(temp_levels, trend)
+                if len(new_unsafe_indexes) == 0:
+                    safe_report_count += 1
+                    break
+    return safe_report_count
+
+
 def main():
     file_definitions = ("test_data.txt", "indata.txt")
     expected_test_result = 4
@@ -68,16 +67,17 @@ def main():
     print(f"Calculating...\n")
 
     test_data = get_indata(file_definitions[0])
-    test_discrepancy = get_number_of_safe_reports(test_data)
-    print("Test Result:", test_discrepancy)
+    test_result = get_number_of_safe_reports(test_data)
+    print("Test Result:", test_result)
     print("-Expected--:", expected_test_result)
 
     data = get_indata(file_definitions[1])
-    discrepancy = get_number_of_safe_reports(data)
-    print("Real Result:", discrepancy)
+    result = get_number_of_safe_reports(data)
+    print("Real Result:", result)
 
     stop_time = time.time()
     elapsed_time = round(stop_time - start_time, 3)
     print(f"\nElapsed time: {elapsed_time}s")
+
 
 main()

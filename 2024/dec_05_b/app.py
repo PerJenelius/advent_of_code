@@ -3,8 +3,7 @@ import time
 
 def get_indata(file_name: str):
     with open(file_name, "r") as file:
-        content = file.readlines()
-        return content
+        return file.read()
 
 
 def get_rules(data: str):
@@ -12,7 +11,7 @@ def get_rules(data: str):
     for line_index in range(len(data)):
         line = data[line_index]
         if "|" in line:
-            rules.append({"left": line.split("|")[0], "right": line.split("|")[1].rstrip()})
+            rules.append({"left": line.split("|")[0], "right": line.split("|")[1]})
     return rules
 
 
@@ -23,7 +22,7 @@ def get_updates(data: str):
         if "," in line:
             update = []
             for page in line.split(","):
-                update.append(page.rstrip())
+                update.append(page)
             updates.append(update)
     return updates
 
@@ -54,8 +53,9 @@ def get_corrected_update(update: list, rules: list):
 
 def find_incorrect_updates(data: str):
     sum_medians = 0
-    rules = get_rules(data)
-    updates = get_updates(data)
+    raw_data = data.split("\n")
+    rules = get_rules(raw_data)
+    updates = get_updates(raw_data)
     for update in updates:
         correct = True
         for page_index in range(len(update)):
