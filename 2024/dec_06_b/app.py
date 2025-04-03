@@ -6,45 +6,50 @@ def get_indata(file_name: str):
         return file.read()
 
 
-def find_start_coordinates(data: list):
-    for line_index in range(len(data)):
-        line = data[line_index]
-        for letter_index in range(len(line)):
-            symbol = line[letter_index]
-            if symbol != "." and symbol != "#":
-                return {"line": line_index, "letter": letter_index, "direction": "up"}
+def find_start_coordinates(data: list, obstacle_coordinates: dict = None):
+    if obstacle_coordinates != None:
+        if obstacle_coordinates["direction"] == "up":
+            return {"line": obstacle_coordinates["line"] + 1, "letter": obstacle_coordinates["letter"], "direction": obstacle_coordinates["direction"]}
+        elif obstacle_coordinates["direction"] == "right":
+            return {"line": obstacle_coordinates["line"], "letter": obstacle_coordinates["letter"] - 1, "direction": obstacle_coordinates["direction"]}
+        elif obstacle_coordinates["direction"] == "down":
+            return {"line": obstacle_coordinates["line"] - 1, "letter": obstacle_coordinates["letter"], "direction": obstacle_coordinates["direction"]}
+        elif obstacle_coordinates["direction"] == "left":
+            return {"line": obstacle_coordinates["line"], "letter": obstacle_coordinates["letter"] + 1, "direction": obstacle_coordinates["direction"]}
+    else:
+        for line_index in range(len(data)):
+            line = data[line_index]
+            for letter_index in range(len(line)):
+                symbol = line[letter_index]
+                if symbol != "." and symbol != "#":
+                    return {"line": line_index, "letter": letter_index, "direction": "up"}
 
 
 def get_new_coordinates(coordinates: dict, direction: str):
     new_line = new_line = coordinates["line"]
     new_letter = coordinates["letter"]
-    if direction == "up":
-        new_line = coordinates["line"] - 1
-    if direction == "right":
-        new_letter = coordinates["letter"] + 1
-    if direction == "down":
-        new_line = coordinates["line"] + 1
-    if direction == "left":
-        new_letter = coordinates["letter"] - 1
+    if direction == "up": new_line = coordinates["line"] - 1
+    elif direction == "right": new_letter = coordinates["letter"] + 1
+    elif direction == "down": new_line = coordinates["line"] + 1
+    elif direction == "left": new_letter = coordinates["letter"] - 1
     return {"line": new_line, "letter": new_letter, "direction": direction}
 
 
 def get_new_direction(direction: str):
     if direction == "up": return "right"
-    if direction == "right": return "down"
-    if direction == "down": return "left"
-    if direction == "left": return "up"
+    elif direction == "right": return "down"
+    elif direction == "down": return "left"
+    elif direction == "left": return "up"
 
 
 def calculate_path(data: str, obstacle_coordinates: dict = None):
     map_data = data.split("\n")
     visited_coordinates = []
-    coordinates = find_start_coordinates(map_data)
+    coordinates = find_start_coordinates(map_data, obstacle_coordinates)
     visited_coordinates.append(coordinates)
     direction = "up"
     simulation_running = True
-    rotations = 0
-    while simulation_running and rotations < 7000:
+    while simulation_running:
         new_coordinates = get_new_coordinates(coordinates, direction)
         new_line = new_coordinates["line"]
         new_letter = new_coordinates["letter"]
@@ -56,27 +61,36 @@ def calculate_path(data: str, obstacle_coordinates: dict = None):
             simulation_running = False
             break
         
-        if new_coordinates == obstacle_coordinates or map_data[new_line][new_letter] == "#":
+        if obstacle_coordinates != None and new_line == obstacle_coordinates["line"] and new_letter == obstacle_coordinates["letter"]:
             direction = get_new_direction(direction)
-        else:
-            coordinates = new_coordinates
-            if coordinates in visited_coordinates:
-                return "loop_detected"
-            else:
-                visited_coordinates.append(coordinates)
-        rotations += 1
-    return visited_coordinates
+            continue
+        
+        if map_data[new_line][new_letter] == "#":
+            direction = get_new_direction(direction)
+            continue
+
+        coordinates = new_coordinates
+        if obstacle_coordinates != None and coordinates in visited_coordinates:
+            obstacle_position = {"line": obstacle_coordinates["line"], "letter": obstacle_coordinates["letter"]}
+            return obstacle_position
+        elif not coordinates in visited_coordinates:
+            visited_coordinates.append(coordinates)
+    if obstacle_coordinates != None:
+        return "no_loop"
+    else:
+        return visited_coordinates
 
 
 def find_every_loop(data: str):
-    loop_count = 0
+    obstacle_positions = []
     visited_coordinates = calculate_path(data)
     for visited_coordinate in visited_coordinates:
         result = calculate_path(data, visited_coordinate)
-        if result == "loop_detected":
-            loop_count += 1
-            print("loop_count:", loop_count)
-    return loop_count
+        if result != "no_loop" and not result in obstacle_positions:
+            obstacle_positions.append(result)
+            if len(obstacle_positions) % 10 == 0:
+                print("Obstacle Count:", len(obstacle_positions))
+    return len(obstacle_positions)
 
 
 def main():
@@ -84,6 +98,7 @@ def main():
     expected_test_result = 6
 
     start_time = time.time()
+    print("This is a brute force solution that may take 10 - 15 minutes to compute")
     print(f"Calculating...\n")
 
     test_data = get_indata(file_definitions[0])
