@@ -4,7 +4,7 @@ This repository collects my attempts at solving these using Python3.<br/>
 Current status of the project:<br/>
 <table>
 	<tr>
-		<hd>Year</hd><hd>01</hd><hd>02</hd><hd>03</hd><hd>04</hd><hd>05</hd><hd>06</hd><hd>07</hd><hd>08</hd><hd>09</hd><hd>10</hd><hd>11</hd><hd>12</hd><hd>13</hd><hd>14</hd><hd>15</hd><hd>16</hd><hd>17</hd><hd>18</hd><hd>19</hd><hd>20</hd><hd>21</hd><hd>22</hd><hd>23</hd><hd>24</hd><hd>25</hd><hd>Sum</hd>
+		<td>Year</td><td>01</td><td>02</td><td>03</td><td>04</td><td>05</td><td>06</td><td>07</td><td>08</td><td>09</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>Sum</td>
 	</tr>
 	<tr>
 		<td><strong>2024</strong></td>
