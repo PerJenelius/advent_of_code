@@ -5,11 +5,11 @@ Current status of the project:<br/>
 <table>
 	<tr>
 		<td>Year</td>
-		<td>01</td><td>02</td><td>03</td><td>04</td><td>05</td><td>06</td><td>07</td><td>08</td><td>09</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>Sum</td>
+		<td>01</td><td>02</td><td>03</td><td>04</td><td>05</td><td>06</td><td>07</td><td>08</td><td>09</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>Sum per year</td>
 	</tr>
 	<tr>
 		<td>2024</td>
-		<td>**</td><td>**</td><td>**</td><td>**</td><td>**</td><td>*</td><td>*</td><td>**</td><td>**</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>16 / 50</td>
+		<td>**</td><td>**</td><td>**</td><td>**</td><td>**</td><td>*</td><td>*</td><td>**</td><td>**</td><td>**</td><td>*</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>19 / 50</td>
 	</tr>
 	<tr>
 		<td><strong>2023</strong></td>
@@ -48,4 +48,4 @@ Current status of the project:<br/>
 		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0 / 50</td>
 	</tr>
 </table>
-Total: 16 / 500 stars
+Total: 19 / 500 stars
