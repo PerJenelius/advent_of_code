@@ -36,7 +36,7 @@ def update_operator_key(old_key: str):
         return new_key
 
 
-def get_possible_equations(data:str):
+def get_possible_equations(data: str):
     possible_equations = 0
     equations = data.split("\n")
     calc_index = 0

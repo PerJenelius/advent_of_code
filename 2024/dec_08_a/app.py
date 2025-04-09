@@ -6,7 +6,7 @@ def get_indata(file_name: str):
         return file.read()
 
 
-def find_antinode_locations(data:str):
+def find_antinode_locations(data: str):
     antinode_locations = []
     lines = data.split("\n")
     for line_index in range(len(lines)):
