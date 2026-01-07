@@ -14,13 +14,13 @@ const getCombination = (indata) => {
     let numberOfZeroes = 0;
     for (let dataline of datalines) {
         if (dataline[0] === 'L') {
-            position -= parseInt(dataline.substr(1));
+            position -= parseInt(dataline.substring(1));
             while (position < 0) {
                 position += 100
             }
         }
         else if (dataline[0] === 'R') {
-            position += parseInt(dataline.substr(1));
+            position += parseInt(dataline.substring(1));
             while (position > 99) {
                 position -= 100
             }

@@ -13,7 +13,7 @@ const getCombination = (indata) => {
     let position = app.startPosition;
     let numberOfZeroes = 0;
     for (let dataline of datalines) {
-        let rotations = parseInt(dataline.substr(1));
+        let rotations = parseInt(dataline.substring(1));
         for (let i = 0; i < rotations; i++) {
             if (dataline[0] === 'L') {
                 if (position === 0) {
