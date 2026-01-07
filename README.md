@@ -1,4 +1,4 @@
-Every year in December, 50 new coding challenges are added to https://adventofcode.com/<br/>
+Every year in December, new coding challenges are added to https://adventofcode.com/<br/>
 This repository collects my attempts at solving these using various languages.<br/>
 
 Current status of the project:<br/>
@@ -9,7 +9,7 @@ Current status of the project:<br/>
 	</tr>
 	<tr>
 		<td><strong>2025 (javascript)</strong></td>
-		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0 / 50</td>
+		<td>*</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>1 / 24</td>
 	</tr>
 	<tr>
 		<td>2024 (Python)</td>
@@ -52,4 +52,4 @@ Current status of the project:<br/>
 		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0 / 50</td>
 	</tr>
 </table>
-Total: 19 / 500 stars
+Total: 19 / 524 stars
