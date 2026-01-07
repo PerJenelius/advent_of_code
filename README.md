@@ -12,7 +12,7 @@ Current status of the project:<br/>
 		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0 / 50</td>
 	</tr>
 	<tr>
-		<td>2024 (Python)</td>
+		<td><strong>2024 (Python)</strong></td>
 		<td>**</td><td>**</td><td>**</td><td>**</td><td>**</td><td>*</td><td>*</td><td>**</td><td>**</td><td>**</td><td>*</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>19 / 50</td>
 	</tr>
 	<tr>
