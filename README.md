@@ -52,4 +52,4 @@ Current status of the project:<br/>
 		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0 / 50</td>
 	</tr>
 </table>
-Total: 19 / 524 stars
+Total: 20 / 524 stars
