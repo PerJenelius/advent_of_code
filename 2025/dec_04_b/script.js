@@ -1,0 +1,66 @@
+'use strict';
+
+const app = {
+    startPosition: 50,
+    testAnswer: 0,
+    realAnswer: 0,
+};
+
+const getNumberOfRemovableRolls = (indata) => {
+    const rows = indata.split('\n')
+        .map(line => line.trim())
+        .filter(line => line.length > 0);
+    let numberOfRemovableRolls = 0;
+    let currentlyRemovableRolls = 0;
+    do {
+        currentlyRemovableRolls = 0;
+        for (let y = 0; y < rows.length; y++) {
+            for (let x = 0; x < rows[0].length; x++) {
+                if (rows[y][x] !== "@") {
+                    continue;
+                }
+                if (getNumberOfAdjacentRolls(rows, x, y) < 4) {
+                    let newString = `${rows[y].substring(0, x)}x${rows[y].substring(x + 1)}`
+                    rows[y] = newString;
+                    ++numberOfRemovableRolls;
+                    ++currentlyRemovableRolls;
+                }
+            }
+        }
+    }
+    while (currentlyRemovableRolls > 0)
+    
+    return numberOfRemovableRolls;
+}
+
+const getNumberOfAdjacentRolls = (rows, x, y) => {
+    let numberOfAdjacentRolls = 0;
+    for (let i = -1; i <= 1; ++i) {
+        for (let j = -1; j <= 1; ++j) {
+            if (y+i < 0 || y+i >= rows.length || x+j < 0 || x+j >= rows[0].length || (i === 0 && j === 0) ) {
+                continue;
+            }
+            if (rows[y+i][x+j] === "@") {
+                ++numberOfAdjacentRolls;
+            }
+        }
+    }
+    return numberOfAdjacentRolls;
+}
+
+const updateTemplate = () => {
+    document.querySelector('#test-answer').innerHTML = app.testAnswer;
+    document.querySelector('#real-answer').innerHTML = app.realAnswer;
+}
+
+const main = () => {
+    app.testAnswer = getNumberOfRemovableRolls(testData());
+    app.realAnswer = getNumberOfRemovableRolls(realData());
+    updateTemplate();
+}
+
+if (document.readyState === 'complete' || (document.readyState !== 'loading' && !document.documentElement.doScroll)) {
+    main();
+} else {
+    document.addEventListener('DOMContentLoaded', main);
+}
