@@ -7,9 +7,7 @@ const app = {
 };
 
 const getCombination = (indata) => {
-    const datalines = indata.split('\n')
-        .map(line => line.trim())
-        .filter(line => line.length > 0);
+    const datalines = getData(indata);
     let position = app.startPosition;
     let numberOfZeroes = 0;
     for (let dataline of datalines) {
@@ -30,6 +28,12 @@ const getCombination = (indata) => {
         }
     }
     return numberOfZeroes;
+}
+
+const getData = (indata) => {
+    return indata.split('\n')
+        .map(line => line.trim())
+        .filter(line => line.length > 0);
 }
 
 const updateTemplate = () => {

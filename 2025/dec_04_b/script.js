@@ -7,9 +7,7 @@ const app = {
 };
 
 const getNumberOfRemovableRolls = (indata) => {
-    const rows = indata.split('\n')
-        .map(line => line.trim())
-        .filter(line => line.length > 0);
+    const rows = getData(indata);
     let numberOfRemovableRolls = 0;
     let currentlyRemovableRolls = 0;
     do {
@@ -46,6 +44,12 @@ const getNumberOfAdjacentRolls = (rows, x, y) => {
         }
     }
     return numberOfAdjacentRolls;
+}
+
+const getData = (indata) => {
+    return indata.split('\n')
+        .map(line => line.trim())
+        .filter(line => line.length > 0);
 }
 
 const updateTemplate = () => {

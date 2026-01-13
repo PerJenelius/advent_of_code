@@ -7,9 +7,7 @@ const app = {
 };
 
 const getNumberOfFreeRolls = (indata) => {
-    const rows = indata.split('\n')
-        .map(line => line.trim())
-        .filter(line => line.length > 0);
+    const rows = getData(indata);
     let numberOfFreeRolls = 0;
     for (let y = 0; y < rows.length; y++) {
         for (let x = 0; x < rows[0].length; x++) {
@@ -37,6 +35,12 @@ const getNumberOfAdjacentRolls = (rows, x, y) => {
         }
     }
     return numberOfAdjacentRolls;
+}
+
+const getData = (indata) => {
+    return indata.split('\n')
+        .map(line => line.trim())
+        .filter(line => line.length > 0);
 }
 
 const updateTemplate = () => {

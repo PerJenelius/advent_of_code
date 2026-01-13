@@ -7,9 +7,7 @@ const app = {
 };
 
 const getMaximumJoltage = (indata) => {
-    const banks = indata.split('\n')
-        .map(line => line.trim())
-        .filter(line => line.length > 0);
+    const banks = getData(indata);
     let maximumJoltage = 0;
     for (let bank of banks) {
         let firstMaxIndex = 0;
@@ -27,6 +25,12 @@ const getMaximumJoltage = (indata) => {
         maximumJoltage += parseInt(`${bank[firstMaxIndex]}${bank[secondMaxIndex]}`);
     }
     return maximumJoltage;
+}
+
+const getData = (indata) => {
+    return indata.split('\n')
+        .map(line => line.trim())
+        .filter(line => line.length > 0);
 }
 
 const updateTemplate = () => {

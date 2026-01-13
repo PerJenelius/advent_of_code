@@ -7,14 +7,18 @@ const app = {
 };
 
 const getMaximumJoltage = (indata) => {
-    const banks = indata.split('\n')
-        .map(line => line.trim())
-        .filter(line => line.length > 0);
     let maximumJoltage = 0;
+    const banks = getData(indata);
     for (let bank of banks) {
         
     }
     return maximumJoltage;
+}
+
+const getData = (indata) => {
+    return indata.split('\n')
+        .map(line => line.trim())
+        .filter(line => line.length > 0);
 }
 
 const updateTemplate = () => {
