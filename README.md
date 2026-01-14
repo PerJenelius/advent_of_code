@@ -9,7 +9,7 @@ Current status of the project:<br/>
 	</tr>
 	<tr>
 		<td><strong>2025 (JavaScript)</strong></td>
-		<td>**</td><td>**</td><td>* </td><td>**</td><td>* </td><td>  </td><td>  </td><td>  </td><td>  </td><td>  </td><td>  </td><td>  </td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>8 / 24</td>
+		<td>**</td><td>**</td><td>* </td><td>**</td><td>* </td><td>* </td><td>  </td><td>  </td><td>  </td><td>  </td><td>  </td><td>  </td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>9 / 24</td>
 	</tr>
 	<tr>
 		<td><strong>2024 (Python)</strong></td>
@@ -52,4 +52,4 @@ Current status of the project:<br/>
 		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0 / 50</td>
 	</tr>
 </table>
-Total: 27 / 524 stars
+Total: 28 / 524 stars
