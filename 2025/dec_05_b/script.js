@@ -6,22 +6,25 @@ const app = {
     realAnswer: 0,
 };
 
-const getNumberOfFreshIngredients = (indata) => {
+const getIDsOfFreshIngredients = (indata) => {
     const datarows = getData(indata);
-    const freshIngredients = [];
+    let freshIngredientIDCount = 0;
     const freshIDRanges = getFreshIDRanges(datarows);
-    for (let datarow of datarows) {
-        if (datarow.includes("-")) { continue }
-        let articleID = parseInt(datarow);
-        for (let freshIDRange of freshIDRanges) {
-            if (articleID >= freshIDRange.start && articleID <= freshIDRange.end) {
-                if (!freshIngredients.includes(articleID)) {
-                    freshIngredients.push(articleID);
-                }
+    for (let i = 0; i < freshIDRanges.length; ++i) {
+        const range = freshIDRanges[i];
+        let rangeSize = (range.end - range.start) + 1;
+        for (let j = 0; j < i; ++j) {
+            const newRange = freshIDRanges[j];
+            if (range.start < newRange.start && range.end > newRange.start) {
+                rangeSize -= (range.end - newRange.start) + 1;
+            }
+            else if (range.end > newRange.end && range.start < newRange.end) {
+                rangeSize -= (newRange.end - range.start) + 1;
             }
         }
+        freshIngredientIDCount += rangeSize;
     }
-    return freshIngredients.length;
+    return freshIngredientIDCount;
 }
 
 const getFreshIDRanges = (datarows) => {
@@ -47,8 +50,8 @@ const updateTemplate = () => {
 }
 
 const main = () => {
-    app.testAnswer = getNumberOfFreshIngredients(testData());
-    app.realAnswer = getNumberOfFreshIngredients(realData());
+    app.testAnswer = getIDsOfFreshIngredients(testData());
+    app.realAnswer = getIDsOfFreshIngredients(realData());
     updateTemplate();
 }
 

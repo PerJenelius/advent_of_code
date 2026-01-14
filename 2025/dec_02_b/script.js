@@ -18,7 +18,7 @@ const addInvalidIDs = (indata) => {
             let invalidCases = 0;
             for (let j=1; j<=maxLength; ++j) {
                 let invalid = true;
-                let parts = [];
+                const parts = [];
                 for (let k=0; k<numberString.length; k=k+j) {
                     parts.push(numberString.substring(k, k+j));
                 }
