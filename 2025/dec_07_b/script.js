@@ -6,26 +6,23 @@ const app = {
     realAnswer: 0,
 };
 
-const getNumberOfSplits = (indata) => {
+const getNumberOfTimelines = (indata) => {
     const datarows = getData(indata);
-    const splitIndices = [];
-    let numberOfSplits = 0;
-    splitIndices.push(datarows[0].indexOf("S"));
+    const splitIndices = new Array(datarows[0].length).fill(0);
+    const startIndex = datarows[0].indexOf("S");
+    splitIndices[startIndex] = 1;
     for (let datarow of datarows) {
         for (let i = 0; i < datarow.length; ++i) {
-            if (datarow[i] === "^" && splitIndices.includes(i)) {
-                ++numberOfSplits;
-                splitIndices.splice(splitIndices.indexOf(i), 1);
-                if (!splitIndices.includes(i-1) && i-1 >= 0) {
-                    splitIndices.push(i-1);
-                }
-                if (!splitIndices.includes(i+1) && i+1 < datarow.length) {
-                    splitIndices.push(i+1);
-                }
+            if (datarow[i] === "^" && splitIndices[i] > 0) {
+                splitIndices[i-1] += splitIndices[i];
+                splitIndices[i+1] += splitIndices[i];
+                splitIndices[i] = 0;
             }
         }
     }
-    return numberOfSplits;
+    let numberOfTimelines = 0;
+    splitIndices.map((item) => numberOfTimelines += item);
+    return numberOfTimelines;
 }
 
 const getData = (indata) => {
@@ -40,8 +37,8 @@ const updateTemplate = () => {
 }
 
 const main = () => {
-    app.testAnswer = getNumberOfSplits(testData());
-    app.realAnswer = getNumberOfSplits(realData());
+    app.testAnswer = getNumberOfTimelines(testData());
+    app.realAnswer = getNumberOfTimelines(realData());
     updateTemplate();
 }
 
