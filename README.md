@@ -11,7 +11,7 @@ Current status of the project:<br/>
 	<tr>
 		<td><strong>2025</strong></td>
 		<td><strong>JavaScript</strong></td>
-		<td>**</td><td>**</td><td>* </td><td>**</td><td>* </td><td>* </td><td>**</td><td>  </td><td>* </td><td>  </td><td>  </td><td>  </td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>12 / 24</td>
+		<td>**</td><td>**</td><td>* </td><td>**</td><td>* </td><td>* </td><td>**</td><td>  </td><td>* </td><td>  </td><td>* </td><td>  </td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>13 / 24</td>
 	</tr>
 	<tr>
 		<td><strong>2024</strong></td>
@@ -64,4 +64,4 @@ Current status of the project:<br/>
 		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0 / 50</td>
 	</tr>
 </table>
-Total: 31 / 524 stars
+Total: 32 / 524 stars

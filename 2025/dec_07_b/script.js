@@ -1,7 +1,6 @@
 'use strict';
 
 const app = {
-    startPosition: 50,
     testAnswer: 0,
     realAnswer: 0,
 };

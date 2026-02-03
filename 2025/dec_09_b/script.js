@@ -7,6 +7,7 @@ const app = {
 
 const getLargestRectangle = (indata) => {
     const coordinates = getCoordinates(indata);
+    const redGreenTiles = getRedGreenTiles(coordinates);
     let largestRectangle = 0;
     for (let i = 0; i < coordinates.length; ++i) {
         for (let j = i + 1; j < coordinates.length; ++j) {
@@ -17,6 +18,26 @@ const getLargestRectangle = (indata) => {
         }
     }
     return largestRectangle;
+}
+
+const getRedGreenTiles = (coordinates) => {
+    const redGreenTiles = [];
+    const maxX = coordinates.sort((a,b) => b.x - a.x)[0].x;
+    const maxY = coordinates.sort((a,b) => b.y - a.y)[0].y;
+    for (let y = 0; y <= maxY; ++y) {
+        for (let x = 0; x <= maxX; ++x) {
+            
+        }
+    }
+
+    console.log("coordinates", coordinates);
+    console.log("maxX", maxX);
+    console.log("maxY", maxY);
+
+    for (let coordinate of coordinates) {
+
+    }
+    return redGreenTiles;
 }
 
 const getCoordinates = (indata) => {
@@ -43,7 +64,7 @@ const updateTemplate = () => {
 
 const main = () => {
     app.testAnswer = getLargestRectangle(testData());
-    app.realAnswer = getLargestRectangle(realData());
+    // app.realAnswer = getLargestRectangle(realData());
     updateTemplate();
 }
 

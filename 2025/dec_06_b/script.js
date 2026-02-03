@@ -1,7 +1,6 @@
 'use strict';
 
 const app = {
-    startPosition: 50,
     testAnswer: 0,
     realAnswer: 0,
 };
@@ -9,10 +8,6 @@ const app = {
 const getSumOfMathProblems = (indata) => {
     const datarows = getData(indata);
     const problems = getProblems(datarows);
-
-    // console.log("datarows", datarows);
-    // console.log("problems", problems);
-
     let sumOfMathProblems = 0;
     for (let problem of problems) {
         switch (problem.operator) {
