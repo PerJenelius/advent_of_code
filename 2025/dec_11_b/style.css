@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Lato", sans-serif;
+    background-color: lightgray;
+}
+.content {
+    margin: 1rem;
+    font-size: 1.125rem;
+}
+#test-answer, #real-answer {
+    font-weight: bold;
+}
