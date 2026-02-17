@@ -3,13 +3,32 @@
 const app = {
     testAnswer: 0,
     realAnswer: 0,
+    bankLength: 12
 };
 
 const getMaximumJoltage = (indata) => {
     let maximumJoltage = 0;
     const banks = getData(indata);
     for (let bank of banks) {
-        
+        let joltage = "";
+        let startIndex = 0;
+        let added = false;
+        for (let joltIndex = 0; joltIndex < app.bankLength; ++joltIndex) {
+            added = false;
+            for (let digit = 9; digit >= 0; --digit) {
+                for (let bankIndex = startIndex; bankIndex < bank.length; ++bankIndex) {
+                    const remainder = bank.length - bankIndex;
+                    const capacity = app.bankLength - joltage.length;
+                    if (parseInt(bank[bankIndex]) === digit && remainder >= capacity && !added) {
+                        joltage += digit.toString();
+                        startIndex = bankIndex + 1;
+                        added = true;
+                        break;
+                    }
+                }
+            }
+        }
+        maximumJoltage += parseInt(joltage);
     }
     return maximumJoltage;
 }
@@ -27,7 +46,7 @@ const updateTemplate = () => {
 
 const main = () => {
     app.testAnswer = getMaximumJoltage(testData());
-    // app.realAnswer = getMaximumJoltage(realData());
+    app.realAnswer = getMaximumJoltage(realData());
     updateTemplate();
 }
 
