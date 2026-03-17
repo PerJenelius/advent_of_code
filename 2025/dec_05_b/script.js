@@ -11,17 +11,28 @@ const getIDsOfFreshIngredients = (indata) => {
     const freshIDRanges = getFreshIDRanges(datarows);
     for (let i = 0; i < freshIDRanges.length; ++i) {
         const range = freshIDRanges[i];
-        let rangeSize = (range.end - range.start) + 1;
+        let alteredRange = {"start": range.start, "end": range.end};
         for (let j = 0; j < i; ++j) {
             const newRange = freshIDRanges[j];
-            if (range.start < newRange.start && range.end > newRange.start) {
-                rangeSize -= (range.end - newRange.start) + 1;
+            if (range.start <= newRange.start && range.end >= newRange.start) {
+                if (range.end < newRange.end) {
+                    alteredRange.end = newRange.end;
+                }
+                freshIDRanges.splice(j, 1, {"start": 1, "end": 0});
             }
-            else if (range.end > newRange.end && range.start < newRange.end) {
-                rangeSize -= (newRange.end - range.start) + 1;
+            else if (range.start >= newRange.start && range.start <= newRange.end) {
+                if (range.end > newRange.end) {
+                    alteredRange.start = newRange.start;
+                    freshIDRanges.splice(j, 1, {"start": 1, "end": 0});
+                } else {
+                    freshIDRanges.splice(i, 1, {"start": 1, "end": 0});
+                }
             }
         }
-        freshIngredientIDCount += rangeSize;
+        freshIDRanges.splice(i, 1, alteredRange);
+    }
+    for (let range of freshIDRanges) {
+        freshIngredientIDCount += (range.end - range.start + 1);
     }
     return freshIngredientIDCount;
 }
@@ -29,7 +40,7 @@ const getIDsOfFreshIngredients = (indata) => {
 const getFreshIDRanges = (datarows) => {
     const freshIDs = [];
     for (let datarow of datarows) {
-        if (!datarow.includes("-")) { continue }
+        if (!datarow.includes("-")) { break }
         const startNumber = parseInt(datarow.split("-")[0]);
         const endNumber = parseInt(datarow.split("-")[1]);
         freshIDs.push({"start": startNumber, "end": endNumber});
